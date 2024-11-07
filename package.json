@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "npx swa start http://localhost:5096 --run \"dotnet run --project ./src/Client\" -i ./src/Api"
+  },
+  "devDependencies": {
+    "@azure/static-web-apps-cli": "^2.0.1"
+  }
+}
