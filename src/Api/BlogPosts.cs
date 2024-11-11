@@ -28,7 +28,6 @@ public class BlogPosts(ILogger<BlogPosts> logger)
                 FROM c
                 WHERE c.Status = 2")] IEnumerable<BlogPost> blogPosts)
     {
-        logger.LogInformation("Hello Mummy");
         return new OkObjectResult(blogPosts);
     }
 
