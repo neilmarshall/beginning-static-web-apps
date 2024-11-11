@@ -1,0 +1,38 @@
+﻿@page "/blogposts/{author}/{id:guid}"
+@using Models
+@inject BlogPostService service
+
+@if (blogPost is null)
+{
+    <div>Loading...</div>
+}
+else
+{
+    <article>
+        <h1>@blogPost.Title</h1>
+        <h2>@blogPost.Author</h2>
+        <div>@blogPost.PublishedDate</div>
+        <div>
+            @foreach (var tag in blogPost.Tags)
+            {
+                <em>@tag,</em>
+            }
+        </div>
+        <div>
+            @((MarkupString)Markdown.ToHtml(blogPost.BlogPostMarkdown))
+        </div>
+    </article>
+}
+
+@code {
+    private BlogPost? blogPost;
+
+    [Parameter]
+    public Guid Id { get; set; }
+
+    [Parameter]
+    public string Author { get; set; } = null!;
+
+    protected override async Task OnInitializedAsync() =>
+        blogPost = await service.GetBlogPost(Id, Author);
+}
