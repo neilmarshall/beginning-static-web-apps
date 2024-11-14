@@ -19,7 +19,7 @@ else
             }
         </div>
         <div>
-            @((MarkupString)Markdown.ToHtml(blogPost.BlogPostMarkdown))
+            @((MarkupString)Markdig.Markdown.ToHtml(blogPost.BlogPostMarkdown))
         </div>
     </article>
 }

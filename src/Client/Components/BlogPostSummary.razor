@@ -10,7 +10,7 @@
         }
     </div>
     <div>
-        @((MarkupString)Markdown.ToHtml(Summary.BlogPostMarkdown))
+        @((MarkupString)Markdig.Markdown.ToHtml(Summary.BlogPostMarkdown))
     </div>
 </article>
 

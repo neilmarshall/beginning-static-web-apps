@@ -13,4 +13,6 @@ builder.Services.AddScoped<BlogPostSummaryService>();
 builder.Services.AddScoped<BlogPostService>();
 builder.Services.AddStaticWebsAuthentication();
 
+builder.Services.AddBlazorBootstrap();
+
 await builder.Build().RunAsync();
