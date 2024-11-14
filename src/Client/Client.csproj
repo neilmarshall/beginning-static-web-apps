@@ -8,12 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="Markdig.Signed" Version="0.38.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.8" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\StaticWebAppAuthentication\StaticWebAppAuthentication.csproj" />
   </ItemGroup>
 
 </Project>

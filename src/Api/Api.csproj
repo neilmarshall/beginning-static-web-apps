@@ -30,5 +30,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\StaticWebAppAuthentication\StaticWebAppAuthentication.csproj" />
   </ItemGroup>
 </Project>
