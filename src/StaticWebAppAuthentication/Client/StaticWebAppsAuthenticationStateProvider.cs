@@ -1,4 +1,4 @@
-﻿using System.Net.Http.Json;
+using System.Net.Http.Json;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Components.Authorization;
 using StaticWebAppAuthentication.Models;
@@ -18,7 +18,7 @@ public class StaticWebAppsAuthenticationStateProvider : AuthenticationStateProvi
 
     private async Task<ClientPrincipal> GetClientPrincipal()
     {
-        var data = await httpClient.GetFromJsonAsync<AuthenticationData>("./auth/me");
+        var data = await httpClient.GetFromJsonAsync<AuthenticationData>("/.auth/me");
         var clientPrincipal = data?.ClientPrincipal ?? new ClientPrincipal();
         return clientPrincipal;
     }
