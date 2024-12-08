@@ -10,7 +10,7 @@
         }
     </div>
     <div>
-        @((MarkupString)Markdig.Markdown.ToHtml(Summary.BlogPostMarkdown))
+        @((MarkupString)Markdig.Markdown.ToHtml(Summary.BlogpostMarkdown))
     </div>
 </article>
 
@@ -18,5 +18,5 @@
     [Parameter]
     public BlogPost Summary { get; set; } = null!;
 
-    void Navigate() => navigationManager.NavigateTo($"/blogposts/{Summary.Author}/{Summary.Id}");
+    void Navigate() => navigationManager.NavigateTo($"/blogposts/{Summary.Author}/{Summary.id}");
 }

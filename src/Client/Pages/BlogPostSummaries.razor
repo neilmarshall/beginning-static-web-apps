@@ -3,6 +3,11 @@
 
 <PageTitle>BlogPostSummaries posts</PageTitle>
 <h1>Blog posts</h1>
+<AuthorizeView Roles="admin">
+    <Authorized>
+        <a href="blogposts/new/edit">Create</a>
+    </Authorized>
+</AuthorizeView>
 
 @if (service.Summaries is null)
 {

@@ -1,6 +1,7 @@
 ﻿@page "/blogposts/{author}/{id:guid}"
 @using Models
 @inject BlogPostService service
+@inject NavigationManager navigationManager
 
 @if (blogPost is null)
 {
@@ -8,6 +9,12 @@
 }
 else
 {
+    <AuthorizeView>
+        <Authorized>
+            <a href="blogposts/@blogPost.Author/@blogPost.id/edit">Edit</a>
+            <a href="javascript:;" @onclick="Delete">Delete</a>
+        </Authorized>
+    </AuthorizeView>
     <article>
         <h1>@blogPost.Title</h1>
         <h2>@blogPost.Author</h2>
@@ -19,7 +26,7 @@ else
             }
         </div>
         <div>
-            @((MarkupString)Markdig.Markdown.ToHtml(blogPost.BlogPostMarkdown))
+            @((MarkupString)Markdig.Markdown.ToHtml(blogPost.BlogpostMarkdown))
         </div>
     </article>
 }
@@ -35,4 +42,13 @@ else
 
     protected override async Task OnInitializedAsync() =>
         blogPost = await service.GetBlogPost(Id, Author);
+
+    private async void Delete()
+    {
+        if (blogPost is null || !blogPost.id.HasValue)
+            throw new NotSupportedException("Cannot delete a blog post without an ID");
+
+        await service.Delete(blogPost.id.Value, blogPost.Author);
+        navigationManager.NavigateTo("blogposts");
+    }
 }
